@@ -14,14 +14,7 @@ from config import BOT_TOKEN
 bot = Bot(token=BOT_TOKEN)
 
 #.\.venv\Scripts\Activate.ps1
-
-
-TOKEN = "8799240440:AAFNztn1WEwFcOpl-ABse4xqJgop7EMiARg"
-bot = Bot(token=TOKEN)
-
-
-
-
+#source .venv/Scripts/activate
 
 
 
