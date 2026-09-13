@@ -1,6 +1,7 @@
 from aiogram.types import Message, CallbackQuery
 from aiogram import Router, F, Bot
 from keyboards.kb_main import sendler, on_main_menu
+from routers.admin_router import ADMINS_ID
 
 CHANNEL_ID = "@YablokoSerials"
 
@@ -11,17 +12,21 @@ auto_podpis2 = '<a href="https://t.me/YablokoSerials">Яблоко🍎</a>'
 
 @router.message(F.photo & F.caption)
 async def creating_txt(message: Message):
-    photo_id = message.photo[-1].file_id
-    text = message.html_text
+    if message.from_user.id in ADMINS_ID:
+        photo_id = message.photo[-1].file_id
+        text = message.html_text
 
-    caption_text = f"{text}\n\n{auto_podpis}\n{auto_podpis2}"
+        caption_text = f"{text}\n\n{auto_podpis}\n{auto_podpis2}"
 
-    await message.answer_photo(
-        photo=photo_id,
-        caption=caption_text,
-        parse_mode="HTML",
-        reply_markup=sendler
-    )
+        await message.answer_photo(
+            photo=photo_id,
+            caption=caption_text,
+            parse_mode="HTML",
+            reply_markup=sendler
+        )
+    else:
+        await message.answer("⛓️‍💥 Ты не входишь в число админов")
+
 
 @router.callback_query(F.data == "send_posts")
 async def sending(callback, bot: Bot):
