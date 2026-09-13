@@ -23,4 +23,4 @@ async def st_cmd(message: Message):
 @router.callback_query(F.data == "create_post")
 async def create_p(callback):
     await callback.answer()
-    await callback.message.answer("📃Отправь пост:")
+    await callback.message.answer("📃Отправь пост. \nТолько картинку не забудь, без неё бот не оториогирует на твое сообщение")
