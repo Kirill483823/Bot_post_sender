@@ -1,0 +1,21 @@
+# Файлы с токенами и секретами
+.env
+config.py
+
+# Виртуальное окружение (твоя папка .venv)
+.venv/
+venv/
+
+# Кэш Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Системные файлы macOS/Windows
+.DS_Store
+Thumbs.db
+
+# IDE (если ты используешь PyCharm, VS Code и т.д.)
+.idea/
+.vscode/
