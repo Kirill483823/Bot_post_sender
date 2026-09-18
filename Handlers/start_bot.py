@@ -8,7 +8,7 @@ from States.user_states import CreatePosts
 from Keyboards.main_keyboards import create_post_keyb
 
 router_start = Router()
-ADMINS_IDS = [5157719233]
+ADMINS_IDS = [5157719233, 5511519564, 5676292004]
 
 @router_start.message(CommandStart())
 async def startBot(message: Message, state: FSMContext):
