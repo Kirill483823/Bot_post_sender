@@ -5,8 +5,6 @@ from aiogram.fsm.context import FSMContext
 send_post_router = Router()
 
 #модуль отвечает за кнопку "Выложить пост"
-
-
 @send_post_router.callback_query(F.data == "send_post")
 async def send_post_in_channel(callback: CallbackQuery, state: FSMContext):
     data = await state.get_data()

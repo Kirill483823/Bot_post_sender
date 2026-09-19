@@ -9,6 +9,7 @@ from Keyboards.Create_keyboards import draft_post
 
 router_create_post = Router()
 
+#нажатие на "создать пост"
 @router_create_post.callback_query(F.data == "create_post")
 async def create(callback: CallbackQuery, state: FSMContext):
     await state.set_state(CreatePosts.AwaitPost)
