@@ -8,7 +8,7 @@ from Keyboards.send_content_keyboard import send_post_keyb
 
 redact_post_router = Router()
 
-auto_podpis=('\n<a href="https://t.me/YablokoPodderjkaBot">📨 Прислать новость</a>\n'
+auto_podpis=('<a href="https://t.me/YablokoPodderjkaBot">📨 Прислать новость</a>\n'
                 '<a href="https://t.me/YablokoSerials">Яблоко🍎</a>'
             )
 
@@ -19,8 +19,10 @@ async def catch_content(message: Message, state: FSMContext):
     photo = message.photo[-1]
     before_text = message.html_text or ""
 
-    text = f"{before_text}{auto_podpis}".strip() #это для удаления лишнего пробела в начале
-                                                 #в случае если человек не отправит текст
+    if before_text:
+        text = f"{before_text}\n\n{auto_podpis}"
+    else:
+        text = auto_podpis
 
     await state.update_data(draft_photo=photo.file_id, draft_text=text)
 
@@ -35,7 +37,7 @@ async def catch_content(message: Message, state: FSMContext):
 @redact_post_router.message(CreatePosts.AwaitPost, F.text)
 async def catch_content_only_text(message: Message, state: FSMContext):
     await state.set_state(CreatePosts.AwaitSendPost)
-    text = f"{message.html_text}{auto_podpis}"
+    text = f"{message.html_text}\n\n{auto_podpis}"
     await state.update_data(draft_text=text)
 
     # Отправляем просто текст
