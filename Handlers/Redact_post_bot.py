@@ -17,7 +17,7 @@ auto_podpis=('\n<a href="https://t.me/YablokoPodderjkaBot">📨 Прислать
 async def catch_content(message: Message, state: FSMContext):
     await state.set_state(CreatePosts.AwaitSendPost)
     photo = message.photo[-1]
-    before_text = message.html_caption or ""
+    before_text = message.html_text or ""
 
     text = f"{before_text}{auto_podpis}".strip() #это для удаления лишнего пробела в начале
                                                  #в случае если человек не отправит текст
