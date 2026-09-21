@@ -16,7 +16,7 @@ async def startBot(message: Message, state: FSMContext):
         await state.set_state(CreatePosts.CreateP)
         await message.answer("👋 Привет, ты находишься в боте для создания и редактирования постов для Telegram-канала"
         "\n\n🔩 Бот находится в разработке, так что при обнаружении багов или ошибок сообщи мне @kirill_r24"
-        "\n\n Бот не умее работать с видио и с несколькими медиа, так что в посте должно быть одно фото"
+        "\n\n Бот не умее работать с видио и с несколькими медиа, так что в посте должно быть одно фото",
         reply_markup=create_post_keyb)
     else:
         await message.answer("Ты не админ")
